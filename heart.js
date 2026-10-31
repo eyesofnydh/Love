@@ -1,9 +1,9 @@
-﻿"use strict";
+"use strict";
 // Change this name to personalize the animation.
 const phrase = "Ashyy";
 const canvas = document.getElementById("heart");
 const ctx = canvas.getContext("2d");
-const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+const reduced = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : { matches: false };
 const polygon = Array.from({length:720}, (_,i) => {
   const a = 2*Math.PI*i/720;
   return [16*Math.sin(a)**3*21,(13*Math.cos(a)-5*Math.cos(2*a)-2*Math.cos(3*a)-Math.cos(4*a))*21+20];
@@ -50,7 +50,7 @@ points.sort((a,b)=>{
 let start,frame;
 function draw(now){
   if(start===undefined)start=now;
-  const elapsed=reduced.matches?12000:now-start;
+  const elapsed=reduced.matches?12000:now-start+120;
   ctx.fillStyle="#060208";
   ctx.fillRect(0,0,800,800);
   ctx.textAlign="center";ctx.textBaseline="middle";
@@ -72,5 +72,6 @@ function draw(now){
 }
 function replay(){cancelAnimationFrame(frame);start=undefined;frame=requestAnimationFrame(draw);}
 document.getElementById("replay").addEventListener("click",replay);
-reduced.addEventListener("change",replay);
+if (reduced.addEventListener) reduced.addEventListener("change", replay);
+else if (reduced.addListener) reduced.addListener(replay);
 replay();

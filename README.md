@@ -1,11 +1,11 @@
-﻿# Love Heart
+# Love Heart
 
 An animated heart made of "Ashyy", for browsers and the Python desktop.
 
 ## Preview the website
 
-Open index.html in your browser. Keep heart.js in the same folder. No installation is needed.
-Change the phrase in heart.js to personalize it, and update the title and canvas label in index.html.
+Open index.html in your browser. The animation is included in this file, so it works on its own. No installation is needed.
+Change the phrase inside the script in index.html to personalize it, and update its title and canvas label. heart.js is a standalone copy for reference; the page runs the embedded script.
 
 ## Publish with GitHub Pages
 
