@@ -1,3 +1,4 @@
+(() => {
 "use strict";
 // Change this name to personalize the animation.
 const phrase = "Ashyy";
@@ -18,9 +19,9 @@ function spans(y) {
   return xs.reduce((out,x,i)=>{if(i%2===0)out.push([x,xs[i+1]]);return out;},[]);
 }
 const points=[];
-const top=Math.max(...polygon.map(p=>p[1]));
-const bottom=Math.min(...polygon.map(p=>p[1]));
-for(let y=top-12;y>bottom+12;y-=23){
+const heartTop=Math.max(...polygon.map(p=>p[1]));
+const heartBottom=Math.min(...polygon.map(p=>p[1]));
+for(let y=heartTop-12;y>heartBottom+12;y-=23){
   for(const a of spans(y+11))for(const b of spans(y-11)){
     const left=Math.max(a[0],b[0])+4, right=Math.min(a[1],b[1])-4;
     let x=left;
@@ -75,3 +76,4 @@ document.getElementById("replay").addEventListener("click",replay);
 if (reduced.addEventListener) reduced.addEventListener("change", replay);
 else if (reduced.addListener) reduced.addListener(replay);
 replay();
+})();
